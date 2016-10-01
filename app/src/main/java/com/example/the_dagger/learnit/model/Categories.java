@@ -3,6 +3,9 @@ package com.example.the_dagger.learnit.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +29,12 @@ public class Categories {
     @SerializedName("solved")
     @Expose
     private String solved;
+
+    public Categories(JSONObject jsonObject) throws JSONException {
+        this.id = jsonObject.getString("id");
+        this.name = jsonObject.getString("name");
+        this.solved = jsonObject.getString("solved");
+    }
 
     /**
      *

@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
-
+        Intent loginIntent = new Intent(this,CategoryActivity.class);
+        startActivity(loginIntent);
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -188,8 +189,6 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
-            Intent loginIntent = new Intent(this,CategoryActivity.class);
-            startActivity(loginIntent);
         }
     }
     private boolean isEmailValid(String email) {
