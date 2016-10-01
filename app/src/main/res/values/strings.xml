@@ -107,4 +107,5 @@
     <string name="enter_the_answer">Enter the Answer</string>
     <string name="title_activity_modules">Modules</string>
     <string name="title_activity_quiz">QuizActivity</string>
+    <string name="title_activity_p2_ptest">P2PTestActivity</string>
 </resources>
