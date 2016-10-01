@@ -1,6 +1,6 @@
 package com.example.the_dagger.learnit.answers;
 
-import com.example.the_dagger.learnit.Answer;
+import com.example.the_dagger.learnit.abs.Answer;
 
 /**
  * Created by vineet on 1/10/16.

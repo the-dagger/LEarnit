@@ -1,10 +1,19 @@
 package com.example.the_dagger.learnit.modules;
 
-import com.example.the_dagger.learnit.Module;
+import com.example.the_dagger.learnit.abs.Question;
 
 /**
  * Created by the-dagger on 1/10/16.
  */
 
-public class Maths extends Module {
+public class Maths extends Question {
+    @Override
+    public boolean isAnswerCorrect() {
+        return false;
+    }
+
+    @Override
+    public void display() {
+
+    }
 }

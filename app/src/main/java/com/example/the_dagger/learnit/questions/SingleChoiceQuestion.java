@@ -1,13 +1,9 @@
 package com.example.the_dagger.learnit.questions;
 
-import com.example.the_dagger.learnit.Answer;
-import com.example.the_dagger.learnit.Question;
-import com.example.the_dagger.learnit.answers.MultipleChoiceAnswer;
+import com.example.the_dagger.learnit.abs.Question;
 import com.example.the_dagger.learnit.answers.SingleChoiceAnswer;
 
 import org.json.JSONObject;
-
-import java.io.InvalidClassException;
 
 /**
  * Created by the-dagger on 1/10/16.

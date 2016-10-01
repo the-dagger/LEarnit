@@ -1,4 +1,4 @@
-package com.example.the_dagger.learnit;
+package com.example.the_dagger.learnit.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -27,6 +27,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.the_dagger.learnit.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -186,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<C
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
-            Intent loginIntent = new Intent(this,Module.class);
+            Intent loginIntent = new Intent(this,CategoryActivity.class);
             startActivity(loginIntent);
         }
     }
