@@ -57,7 +57,7 @@ public class P2PTestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Paytm paytm = Paytm.getInstance();
                 Map<String, String> header = new HashMap<String, String>();
-                JSONObject body = paytm.getSinginOtpBody(etParentMobile.getText().toString(), "staging-grofers", "wallet", "token");
+                JSONObject body = paytm.getSinginOtpBody(etParentMobile.getText().toString(), "staging-hackathalon", "wallet", "token");
 
                 paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
                     @Override
@@ -119,7 +119,7 @@ public class P2PTestActivity extends AppCompatActivity {
                     Paytm paytm = Paytm.getInstance();
                     Map<String, String> header = new HashMap<String, String>();
                     header.put("ssotoken", validateOtp.getString("access_token"));
-                    JSONObject body = paytm.getP2pTransferBody(0, 0, "", etChildMobile.getText().toString(), "", 10, "INR", "Loan", "127.0.0.1", "PayTm", "P2P_TRANSFER");
+                    JSONObject body = paytm.getP2pTransferBody(0, 0, etChildMobile.getText().toString(), 10, "INR", "Loan", "127.0.0.1", "PayTm", "P2P_TRANSFER");
                     paytm.p2pTransfer(header, body, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
