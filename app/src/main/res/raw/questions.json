@@ -6,23 +6,23 @@
     "quizzes": [
       {
         "type": "single-select-item",
-        "question": "What vegetable did Mark Twain describe as “cabbage with a college education”?",
+        "question": "What is the value of sin(30)",
         "options": [
-          "Spinach",
-          "Broccoli",
-          "Cauliflower",
-          "Kale"
+          "1/2",
+          "3/2",
+          "1/3",
+          "1/4"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "type": "single-select",
-        "question": "Who played Dr. John Hammond in Jurassic Park?",
+        "question": "Who was the one to discover zero?",
         "options": [
-          "Anthony Hopkins",
+          "Newton",
           "Jeff Goldblum",
-          "Richard Attenborough",
-          "Emmet Brown"
+          "Aaryabhatta",
+          "Shrinivasan Ramanujahn"
         ],
         "answer": 2
       },
@@ -121,14 +121,14 @@
       },
       {
         "type": "single-select-item",
-        "question": "Which 1971 film, known for its violence, was the first to use Dolby sound?",
+        "question": "If a 5,000 coupon bond has a coupon rate of 13 percent, then the coupon payment every year is ___",
         "options": [
-          "Straw Dogs",
-          "Dirty Harry",
-          "A Clockwork Orange",
-          "Play Misty for me"
+          "650",
+          "1,300",
+          "None of These",
+          "130"
         ],
-        "answer": 2
+        "answer": 0
       },
       {
         "type": "picker",
@@ -160,12 +160,12 @@
       },
       {
         "type": "single-select",
-        "question": "What nut is used to flavor marzipan?",
+        "question": "The average of first 50 natural numbers is ",
         "options": [
-          "Walnut",
-          "Almond",
-          "Cashew",
-          "Pistachio"
+          "25.30",
+          "25.50",
+          "25.00",
+          "12.25"
         ],
         "answer": 1
       }
@@ -197,15 +197,14 @@
       },
       {
         "type": "single-select-item",
-        "question": "What U.S. President committed an unpardonable sin by kissing the Queen Mother on the lips?",
+        "question": "The number of 3-digit numbers divisible by 6, is",
         "options": [
-          "George W. Bush",
-          "Jimmy Carter",
-          "Barack Obama",
-          "Lyndon B. Johnson",
-          "Ronald Reagan"
+          "149",
+          "166",
+          "150",
+          "151"
         ],
-        "answer": 1
+        "answer": 2
       },
       {
         "type": "true-false",
@@ -259,13 +258,12 @@
       },
       {
         "type": "single-select",
-        "question": "On which island was Napoleon born?",
+        "question": "106 × 106 – 94 × 94 = ?",
         "options": [
-          "Sardinia",
-          "Corsica",
-          "Tahiti",
-          "Réunion",
-          "New Caledonia"
+          "2004",
+          "2400",
+          "1904",
+          "1906"
         ],
         "answer": 1
       },
@@ -415,14 +413,14 @@
       },
       {
         "type": "single-select",
-        "question": "Where can you find the Pensacola Mountains?",
+        "question": "Which of the following numbers gives 240 when added to its own square?",
         "options": [
-          "Florida",
-          "Switzerland",
-          "Antarctica",
-          "Argentina"
+          "15",
+          "16",
+          "18",
+          "20"
         ],
-        "answer": 2
+        "answer": 0
       }
     ],
     "scores": [
@@ -451,17 +449,14 @@
       },
       {
         "type": "single-select-item",
-        "question": "What is the only bird that can fly backwards?",
+        "question": "The simplest form of 1.5 : 2.5 is ___",
         "options": [
-          "Crow",
-          "Hummingbird",
-          "Pelican",
-          "Seagull",
-          "Albatross",
-          "Falcon",
-          "Sparrow"
+          "6 : 10",
+          "15 : 25",
+          "0.75 : 1.25",
+          "3 : 5"
         ],
-        "answer": 1
+        "answer": 3
       },
       {
         "type": "four-quarter",
@@ -621,12 +616,12 @@
       },
       {
         "type": "single-select",
-        "question": "What was the name of Mork and Mindy’s child?",
+        "question": " What is the unit of volume?",
         "options": [
-          "Micah",
-          "Morty",
-          "Mearth",
-          "Magnus"
+          "Only units.",
+          "Square units.",
+          "Cubic units.",
+          "None of These"
         ],
         "answer": 2
       },
@@ -670,388 +665,6 @@
         "type": "fill-blank",
         "question": "In which film did Robert De Niro ask “Are you talkin’ to me?”",
         "answer": "Taxi Driver"
-      }
-    ],
-    "scores": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "solved": "false"
-  },
-  {
-    "name": "Music",
-    "id": "music",
-    "theme": "blue",
-    "quizzes": [
-      {
-        "type": "four-quarter",
-        "question": "Who was the youngest Beatle?",
-        "options": [
-          "John",
-          "Paul",
-          "George",
-          "Ringo"
-        ],
-        "answer": 2
-      },
-      {
-        "type": "multi-select",
-        "question": "Best known for playing the trumpet:",
-        "options": [
-          "Miles Davis",
-          "Chet Baker",
-          "Art Farmer",
-          "John Coltrane",
-          "Dizzy Gillespie",
-          "Freddie Hubbard"
-        ],
-        "answer": [
-          0,
-          1,
-          2,
-          4,
-          5
-        ]
-      },
-      {
-        "type": "toggle-translate",
-        "question": "Which nationality of the following composers is incorrect?",
-        "options": [
-          [
-            "Johann Sebastian Bach",
-            "German"
-          ],
-          [
-            "Sergei Rachmaninov",
-            "Czechoslovakian"
-          ],
-          [
-            "Frederic Chopin",
-            "Polish"
-          ],
-          [
-            "Giacoma Puccini",
-            "Italian"
-          ],
-          [
-            "George Gershwin",
-            "Austrian"
-          ]
-        ],
-        "answer": [
-          1,
-          4
-        ]
-      },
-      {
-        "type": "fill-blank",
-        "question": "Prior to forming BAD which group did Mick Jones Belong to?",
-        "answer": "The Clash"
-      },
-      {
-        "type": "single-select-item",
-        "question": "Frank Sinatra covered this song made famous by a popular Jim Henson character.",
-        "options": [
-          "Welcome to Sesame Street",
-          "It’s not Easy Bein’ Green",
-          "Hugga Wugga",
-          "Wild Thing"
-        ],
-        "answer": 1
-      },
-      {
-        "type": "true-false",
-        "question": "Queen’s Bohemian Rhapsody was a Christmas number one hit in the UK, twice.",
-        "answer": true
-      },
-      {
-        "type": "picker",
-        "question": "How many symphonies did Beethoven write?",
-        "min": 1,
-        "max": 16,
-        "answer": 9
-      },
-      {
-        "type": "single-select",
-        "question": "Which was the first Beach Boys number one song in the US?",
-        "options": [
-          "Kokomo",
-          "Help Me",
-          "Rhonda",
-          "I Get Around",
-          "Good Vibrations"
-        ],
-        "answer": 3
-      },
-      {
-        "type": "four-quarter",
-        "question": "Noah Benjamin Lenox is an experimental musician better known as which animal?",
-        "options": [
-          "Grizzly Bear",
-          "Panda Bear",
-          "Gorrilla",
-          "Pitbull"
-        ],
-        "answer": 1
-      },
-      {
-        "type": "single-select-item",
-        "question": "After Simeon Oliver Coxe III incorporated a 1940s audio oscillator his band was renamed this, after a William Butler Yeats poem:",
-        "options": [
-          "Silver Apples",
-          "Golden Oranges",
-          "White Rose",
-          "Black Moth"
-        ],
-        "answer": 0
-      }
-    ],
-    "scores": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "solved": "false"
-  },
-  {
-    "name": "Entertainment",
-    "id": "entertainment",
-    "theme": "red",
-    "quizzes": [
-      {
-        "type": "fill-blank",
-        "question": "Where was superman born?",
-        "answer": "Krypton"
-      },
-      {
-        "type": "four-quarter",
-        "question": "What catchphrase is associated with the Daleks from Doctor Who?",
-        "options": [
-          "Eradicate",
-          "Exterminate",
-          "Eliminate",
-          "Execute"
-        ],
-        "answer": 1
-      },
-      {
-        "type": "picker",
-        "question": "In the film Cool Hand Luke, how many hard boiled eggs did Paul Newman eat to win a bet?",
-        "min": 20,
-        "max": 80,
-        "answer": 50
-      },
-      {
-        "type": "true-false",
-        "question": "Frank Sinatra paid a $240,000 ransom to free his kidnapped son.",
-        "answer": true
-      },
-      {
-        "type": "single-select",
-        "question": "Who played Dr. John Hammond in Jurassic Park?",
-        "options": [
-          "Anthony Hopkins",
-          "Jeff Goldblum",
-          "Richard Attenborough",
-          "Emmet Brown"
-        ],
-        "answer": 2
-      },
-      {
-        "type": "single-select",
-        "question": "Who played Dr. John Hammond in Jurassic Park?",
-        "options": [
-          "Anthony Hopkins",
-          "Jeff Goldblum",
-          "Richard Attenborough",
-          "Emmet Brown"
-        ],
-        "answer": 2
-      },
-      {
-        "type": "single-select",
-        "question": "Who played Dr. John Hammond in Jurassic Park?",
-        "options": [
-          "Anthony Hopkins",
-          "Jeff Goldblum",
-          "Richard Attenborough",
-          "Emmet Brown"
-        ],
-        "answer": 2
-      },
-      {
-        "type": "single-select",
-        "question": "Who played Dr. John Hammond in Jurassic Park?",
-        "options": [
-          "Anthony Hopkins",
-          "Jeff Goldblum",
-          "Richard Attenborough",
-          "Emmet Brown"
-        ],
-        "answer": 2
-      },
-      {
-        "type": "picker",
-        "question": "What year did the Live Aid concerts take place?",
-        "min": 1965,
-        "max": 1990,
-        "answer": 1985
-      },
-      {
-        "type": "fill-blank",
-        "question": "What is Mr. Burns’ first name?",
-        "answer": "Charles"
-      }
-    ],
-    "scores": [
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0,
-      0
-    ],
-    "solved": "false"
-  },
-  {
-    "name": "Sports",
-    "id": "sports",
-    "theme": "purple",
-    "quizzes": [
-      {
-        "type": "fill-blank",
-        "question": "What is the national sport of Canada?",
-        "answer": "Lacrosse"
-      },
-      {
-        "type": "four-quarter",
-        "question": "Which country won every Olympic Men’s hockey gold medal from 1928 to 1956?",
-        "options": [
-          "Canada",
-          "Russia",
-          "India",
-          "USA"
-        ],
-        "answer": 2
-      },
-      {
-        "type": "true-false",
-        "question": "A biathlon event consists of running a half marathon and biking 56 miles.",
-        "answer": false
-      },
-      {
-        "type": "picker",
-        "question": "How many players are in a game of water polo?",
-        "min": 10,
-        "max": 25,
-        "answer": 14
-      },
-      {
-        "type": "toggle-translate",
-        "question": "Which sports and team names are incorrectly associated?",
-        "options": [
-          [
-            "Cleveland Indians",
-            "Baseball"
-          ],
-          [
-            "Leicester Tigers",
-            "Rugby Union"
-          ],
-          [
-            "Bradford Bulls",
-            "Hockey"
-          ],
-          [
-            "Belle Vue Aces",
-            "Poker"
-          ],
-          [
-            "Wigan Wasps",
-            "Lacrosse"
-          ],
-          [
-            "Kent Spitfires",
-            "Cricket"
-          ]
-        ],
-        "answer": [
-          2,
-          3,
-          4
-        ]
-      },
-      {
-        "type": "multi-select",
-        "question": "Which cities have hosted the Olympic games?",
-        "options": [
-          "Athens",
-          "Lake Placid",
-          "Innsbruck",
-          "New York",
-          "Capetown",
-          "St. Mortiz"
-        ],
-        "answer": [
-          0,
-          1,
-          2,
-          4,
-          5
-        ]
-      },
-      {
-        "type": "four-quarter",
-        "question": "Which American was the best paid sportsman in 1920?",
-        "options": [
-          "Jack Dempsey",
-          "Babe Ruth",
-          "Big Bill Tilden",
-          "Bobby Jones"
-        ],
-        "answer": 1
-      },
-      {
-        "type": "single-select-item",
-        "question": " What do you call a stadium used for cycling events?",
-        "options": [
-          "Cycleplex",
-          "Velodrome",
-          "Pumptrack",
-          "Speedway"
-        ],
-        "answer": 1
-      },
-      {
-        "type": "fill-blank",
-        "question": "In 1954, Joe Di Maggio married Norma Jean Baker who was also known as?",
-        "answer": "Marilyn Monroe"
-      },
-      {
-        "type": "picker",
-        "question": "About how many kilometers are in a marathon?",
-        "min": 10,
-        "max": 65,
-        "answer": 42
       }
     ],
     "scores": [

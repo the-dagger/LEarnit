@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splash_image"
     android:layout_width="match_parent"
+    android:layout_margin="32dp"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
     tools:context=".activity.SplashActivity"
     tools:src="@mipmap/ic_launcher" />

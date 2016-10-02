@@ -33,7 +33,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import static com.example.the_dagger.learnit.R.raw.questions;
 
@@ -94,10 +96,16 @@ public class MainActivity extends AppCompatActivity {
         List<Categories> categoryList = getCategories();
         Log.e("CategoryListSIze", String.valueOf(categoryList.size()));
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionList = new ArrayList<>();
+        Set<SingleChoiceQuestion> singleChoiceQuestionsSet = new LinkedHashSet<>();
         for(int i=0;i<categoryList.size();i++){
             for(int j=0;j<categoryList.get(i).getQuizzes().size();j++){
-                singleChoiceQuestionList.add(categoryList.get(i).getQuizzes().get(j));
-                Log.e("Quizzes",categoryList.get(i).getQuizzes().get(j).getQuestion());
+                if(singleChoiceQuestionsSet!=null || singleChoiceQuestionsSet.size()>0){
+                    if(!singleChoiceQuestionsSet.equals(categoryList.get(i).getQuizzes().get(j))){
+                        singleChoiceQuestionList.add(categoryList.get(i).getQuizzes().get(j));
+                        Log.e("Quizzes",categoryList.get(i).getQuizzes().get(j).getQuestion());
+                    }
+                }
+                singleChoiceQuestionsSet.add(categoryList.get(i).getQuizzes().get(j));
             }
         }
 //        getQuizzes(singleCategory);
