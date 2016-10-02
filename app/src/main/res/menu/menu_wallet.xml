@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activity.MainActivity">
     <item
-        android:id="@+id/action_sort"
+        android:id="@+id/action_logout"
         android:orderInCategory="300"
         android:title="@string/logout"
-        app:showAsAction="never" />
+        android:icon="@drawable/ic_action_logout"
+        app:showAsAction="always" />
     <item
-        android:id="@+id/action_fav"
+        android:id="@+id/action_wallet"
         android:orderInCategory="200"
         android:title="@string/action_wallet"
-        android:icon="@android:drawable/ic_menu_compass"
+        android:icon="@drawable/ic_action_wallet"
         app:showAsAction="always" />
 </menu>
