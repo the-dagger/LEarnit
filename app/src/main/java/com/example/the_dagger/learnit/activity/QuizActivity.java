@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.the_dagger.learnit.R;
@@ -54,7 +53,6 @@ public class QuizActivity extends AppCompatActivity {
                 return true;
             }
         });
-//
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
