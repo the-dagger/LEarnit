@@ -89,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                             builder.setTitle("Enter OTP on parents device");
+                            builder.setCancelable(false);
 
                             final EditText input = new EditText(LoginActivity.this);
                             input.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -156,6 +157,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Enter OTP on your phone");
+                    builder.setCancelable(false);
 
                     final EditText input = new EditText(LoginActivity.this);
                     input.setInputType(InputType.TYPE_CLASS_TEXT);

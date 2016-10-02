@@ -230,6 +230,7 @@ public class FullscreenActivity extends AppCompatActivity {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setTitle("Enter OTP");
+                    builder.setCancelable(false);
 
                     final EditText input = new EditText(view.getContext());
                     input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
