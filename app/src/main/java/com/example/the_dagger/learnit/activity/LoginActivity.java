@@ -2,6 +2,7 @@ package com.example.the_dagger.learnit.activity;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,11 +32,14 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText username, age, childphone, parentphone, password;
     Button loginButton;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        context = this;
 
         if (SuperPrefs.newInstance(getApplicationContext()).stringExists("access_token")) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -84,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                            builder.setTitle("Enter OTP");
+                            builder.setTitle("Enter OTP on parents device");
 
                             final EditText input = new EditText(LoginActivity.this);
                             input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -96,7 +100,8 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     String otp = input.getText().toString();
                                     try {
-                                        validateToken(otp, response.getString("state") );
+                                        validateToken(otp, response.getString("state"), true );
+                                        loginStudent(LoginActivity.this, childphone.getText().toString());
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -127,7 +132,71 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    void validateToken (String otp, String state) {
+    void loginStudent(final Context contexti, String childphone) {
+        Paytm paytm = Paytm.getInstance();
+        Map<String, String> header = new HashMap<String, String>();
+        JSONObject body = paytm.getSinginOtpBody(childphone, "staging-hackathalon", "wallet", "token");
+
+        final ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Registering Child on Paytm server");
+        progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
+
+        final JSONObject signinResponse = new JSONObject();
+
+        paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(final JSONObject response) {
+                Log.e("Singin", response.toString());
+                progressDialog.dismiss();
+                try {
+                    signinResponse.put("state", response.get("state"));
+                    // TODO : Handle errors
+
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Enter OTP on your phone");
+
+                    final EditText input = new EditText(LoginActivity.this);
+                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    input.setHint("OTP here!!!");
+                    builder.setView(input);
+
+                    builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String otp = input.getText().toString();
+                            try {
+                                validateToken(otp, response.getString("state"), false);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Internet connection error", Toast.LENGTH_LONG).show();
+                Log.e("Signin", error.toString());
+            }
+        });
+        progressDialog.show();
+    }
+
+    void validateToken (String otp, String state, final boolean isParent) {
         try {
             Paytm paytm = Paytm.getInstance();
             Map<String, String> header = new HashMap<String, String>();
@@ -142,12 +211,15 @@ public class LoginActivity extends AppCompatActivity {
 
                         Log.e("Validate", response.toString(4));
                         SuperPrefs superPrefs = SuperPrefs.newInstance(getApplicationContext());
-                        superPrefs.setString("access_token",response.getString("access_token"));
+                        String key = isParent ? "access_token" : "child_access_token";
+                        superPrefs.setString(key,response.getString("access_token"));
                         SuperPrefs.newInstance(getApplicationContext());
 
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        if (!isParent) {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

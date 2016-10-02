@@ -29,7 +29,7 @@ public class WalletActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.currentBalance);
 
         textView.setText(SuperPrefs.newInstance(getApplicationContext()).getInt("balance", 0) + " ₹");
-        String access_token = SuperPrefs.newInstance(getApplicationContext()).getString("access_token");
+        String access_token = SuperPrefs.newInstance(getApplicationContext()).getString("child_access_token");
 
         Map<String, String> header = new HashMap<>();
         header.put("ssotoken", access_token);
