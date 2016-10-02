@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
+        android:text="Vineet Garg"
         android:ems="10"
         >
 
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:inputType="number"
+        android:text="22"
         android:ems="10" >
 
         <requestFocus />
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:inputType="number"
+        android:text="9654851230"
         android:ems="10" >
 
         <requestFocus />
@@ -53,6 +56,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="9968195522"
         android:inputType="number"
         android:ems="10" >
 
@@ -66,6 +70,7 @@
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:text="password"
         android:inputType="textPassword" />
 
     <Button
