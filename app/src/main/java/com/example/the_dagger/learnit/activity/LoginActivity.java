@@ -61,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                SuperPrefs.newInstance(getApplicationContext()).setString("child_phone", childphone.getText().toString());
                 Paytm paytm = Paytm.getInstance();
                 Map<String, String> header = new HashMap<String, String>();
                 JSONObject body = paytm.getSinginOtpBody(parentphone.getText().toString(), "staging-hackathalon", "wallet", "token");

@@ -1,17 +1,35 @@
 package com.example.the_dagger.learnit.activity;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.example.the_dagger.learnit.R;
+import com.example.the_dagger.learnit.paytm.Paytm;
+import com.example.the_dagger.learnit.utility.SuperPrefs;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -23,6 +41,8 @@ public class FullscreenActivity extends AppCompatActivity {
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
     private static final boolean AUTO_HIDE = true;
+
+    int correctCounter;
 
     /**
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
@@ -92,7 +112,7 @@ public class FullscreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fullscreen);
-        int correctCounter = getIntent().getIntExtra("correctAnswer",0);
+        correctCounter = getIntent().getIntExtra("correctAnswer",0);
         TextView correctScore = (TextView) findViewById(R.id.score);
         correctScore.setText("You got "+correctCounter+" out of 10 Questions Right!" );
         TextView amountWon = (TextView) findViewById(R.id.amountWon);
@@ -181,6 +201,94 @@ public class FullscreenActivity extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 
-    public void transferMoney(View view) {
+    public void transferMoney(final View view) {
+
+        int amount = (int)(correctCounter * 1.5);
+        String ssoToken = SuperPrefs.newInstance(getApplicationContext()).getString("access_token");
+
+        final Paytm paytm = Paytm.getInstance();
+
+        Map<String, String> header = new HashMap<>();
+        header.put("ssotoken", ssoToken);
+
+        JSONObject body = paytm.getP2pTransferBody(0, 0, SuperPrefs.newInstance(getApplicationContext()).getString("child_phone"), amount, "INR", "Module Completed", "127.0.0.1", "PayTm", "P2P_TRANSFER");
+
+        final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+        progressDialog.setTitle("Transferring money into your account");
+        progressDialog.setIndeterminate(true);
+        progressDialog.setCancelable(false);
+
+        paytm.p2pTransfer(header, body, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
+                try {
+                    final String state = response.getJSONObject("response").getString("state");
+                    final String ssoToken = SuperPrefs.newInstance(view.getContext()).getString("access_token");
+
+                    Log.e("Transact", response.toString(4));
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setTitle("Enter OTP");
+
+                    final EditText input = new EditText(view.getContext());
+                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    input.setHint("OTP here!!!");
+                    builder.setView(input);
+
+                    builder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            String otp = input.getText().toString();
+                            try {
+
+                                Map<String, String> header = new HashMap<String, String>();
+                                header.put("ssotoken", ssoToken);
+
+                                JSONObject body = paytm.getValidateTokenBody(state, otp, "127.0.0.1", "PayTM", "P2P_TRANSFER");
+                                paytm.validateToken(header, body, new Response.Listener<JSONObject>() {
+                                    @Override
+                                    public void onResponse(JSONObject response) {
+                                        // TODO : Handle errors
+
+                                        try {
+                                            Toast.makeText(view.getContext(), "Congratulations", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(view.getContext(), WalletActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } catch (Exception e) {
+                                            Toast.makeText(view.getContext(), "Server error", Toast.LENGTH_LONG).show();
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(view.getContext(), "Error contacting server", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    builder.show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Log.e("Transact", error.toString());
+            }
+        });
     }
 }
