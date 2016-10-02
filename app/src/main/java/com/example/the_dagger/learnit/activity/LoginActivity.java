@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                             builder.setTitle("Enter OTP on parents device");
 
                             final EditText input = new EditText(LoginActivity.this);
-                            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                            input.setInputType(InputType.TYPE_CLASS_TEXT);
                             input.setHint("OTP here!!!");
                             builder.setView(input);
 
@@ -158,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                     builder.setTitle("Enter OTP on your phone");
 
                     final EditText input = new EditText(LoginActivity.this);
-                    input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    input.setInputType(InputType.TYPE_CLASS_TEXT);
                     input.setHint("OTP here!!!");
                     builder.setView(input);
 

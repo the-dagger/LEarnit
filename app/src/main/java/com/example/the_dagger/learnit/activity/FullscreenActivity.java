@@ -290,5 +290,6 @@ public class FullscreenActivity extends AppCompatActivity {
                 Log.e("Transact", error.toString());
             }
         });
+        progressDialog.show();
     }
 }
