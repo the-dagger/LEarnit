@@ -2,10 +2,12 @@ package com.example.the_dagger.learnit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.the_dagger.learnit.R;
@@ -20,6 +22,7 @@ import java.util.ArrayList;
 public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoiceQuestionAdapter.ViewHolder> implements View.OnClickListener {
     private ArrayList<SingleChoiceQuestion> singleChoiceQuestionArrayList;
 
+    public int index = -1;
     @Override
     public SingleChoiceQuestionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_single_choice,parent,false);
@@ -62,6 +65,7 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView question;
+        public RadioGroup group;
         public RadioButton rb0;
         public RadioButton rb1;
         public RadioButton rb2;
@@ -73,6 +77,16 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
             rb1 = (RadioButton) itemView.findViewById(R.id.singleChoice1);
             rb2 = (RadioButton) itemView.findViewById(R.id.singleChoice2);
             rb3 = (RadioButton) itemView.findViewById(R.id.singleChoice3);
+
+            group = (RadioGroup) itemView.findViewById(R.id.radioGroup);
+            group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                    View radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+                    index = radioGroup.indexOfChild(radioButton);
+                    Log.e("Index", String.valueOf(index) + " and " + String.valueOf(i));
+                }
+            });
         }
     }
 }

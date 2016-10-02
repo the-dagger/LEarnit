@@ -23,8 +23,6 @@ public class QuizActivity extends AppCompatActivity {
     public static int correctCounter = 0;
     int answer[] = new int[10];
     int position = 0;
-    RadioGroup group;
-    int index;
     RecyclerView quizRecyclerView;
 
 
@@ -35,19 +33,11 @@ public class QuizActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         View rootView = getLayoutInflater().inflate(R.layout.question_single_choice, null);
-        group = (RadioGroup) rootView.findViewById(R.id.radioGroup);
-        group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                View radioButton = radioGroup.findViewById(i);
-                index = radioGroup.indexOfChild(radioButton);
-                Log.e("Index", String.valueOf(index));
-            }
-        });
+
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionArrayList = getIntent().getParcelableArrayListExtra("singleChoiceQuestion");
         answer = getIntent().getIntArrayExtra("answer");
         Log.e("Size", String.valueOf(singleChoiceQuestionArrayList.size()));
-        SingleChoiceQuestionAdapter singleChoiceQuestionAdapter = new SingleChoiceQuestionAdapter(this, singleChoiceQuestionArrayList);
+        final SingleChoiceQuestionAdapter singleChoiceQuestionAdapter = new SingleChoiceQuestionAdapter(this, singleChoiceQuestionArrayList);
         quizRecyclerView = (RecyclerView) findViewById(R.id.quizRv);
         quizRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         quizRecyclerView.setAdapter(singleChoiceQuestionAdapter);
@@ -62,7 +52,7 @@ public class QuizActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("Index", String.valueOf(index));
+                Log.e("Index", String.valueOf(singleChoiceQuestionAdapter.index));
                 Log.e("Position", String.valueOf(position));
                 if (position == 10) {
                     Intent resultIntent = new Intent(QuizActivity.this,FullscreenActivity.class);
@@ -71,7 +61,7 @@ public class QuizActivity extends AppCompatActivity {
                 }
 //                Log.e("Correct Answer", String.valueOf(answer[position]));
                 try {
-                    if (index == answer[position] && position<10) {
+                    if (singleChoiceQuestionAdapter.index == answer[position] && position<10) {
                         correctCounter++;
                     }
                 } catch (Exception e) {
