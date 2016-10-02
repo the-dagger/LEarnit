@@ -9,6 +9,8 @@ public abstract class Question {
     public String mQuestionType;
     public String mQuestion;
 
+
+
     public String getQuestionType() {
         return mQuestionType;
     }

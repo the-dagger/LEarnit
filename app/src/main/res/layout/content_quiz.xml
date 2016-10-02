@@ -13,9 +13,11 @@
     tools:context="com.example.the_dagger.learnit.activity.QuizActivity"
     tools:showIn="@layout/activity_quiz">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/quizRv" />
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:id="@+id/quizRv">
+
+   </android.support.v7.widget.RecyclerView>
     
 </RelativeLayout>

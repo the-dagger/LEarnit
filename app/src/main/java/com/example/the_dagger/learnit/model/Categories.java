@@ -1,5 +1,8 @@
 package com.example.the_dagger.learnit.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +12,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Categories {
+public class Categories implements Parcelable {
 
     @SerializedName("name")
     @Expose
@@ -22,7 +25,7 @@ public class Categories {
     private String theme;
     @SerializedName("quizzes")
     @Expose
-    private List<Quiz> quizzes = new ArrayList<Quiz>();
+    private List<SingleChoiceQuestion> quizzes = new ArrayList<SingleChoiceQuestion>();
     @SerializedName("scores")
     @Expose
     private List<Integer> scores = new ArrayList<Integer>();
@@ -35,6 +38,25 @@ public class Categories {
         this.name = jsonObject.getString("name");
         this.solved = jsonObject.getString("solved");
     }
+
+    protected Categories(Parcel in) {
+        name = in.readString();
+        id = in.readString();
+        theme = in.readString();
+        solved = in.readString();
+    }
+
+    public static final Creator<Categories> CREATOR = new Creator<Categories>() {
+        @Override
+        public Categories createFromParcel(Parcel in) {
+            return new Categories(in);
+        }
+
+        @Override
+        public Categories[] newArray(int size) {
+            return new Categories[size];
+        }
+    };
 
     /**
      *
@@ -95,7 +117,7 @@ public class Categories {
      * @return
      * The quizzes
      */
-    public List<Quiz> getQuizzes() {
+    public List<SingleChoiceQuestion> getQuizzes() {
         return quizzes;
     }
 
@@ -104,7 +126,7 @@ public class Categories {
      * @param quizzes
      * The quizzes
      */
-    public void setQuizzes(List<Quiz> quizzes) {
+    public void setQuizzes(List<SingleChoiceQuestion> quizzes) {
         this.quizzes = quizzes;
     }
 
@@ -144,4 +166,16 @@ public class Categories {
         this.solved = solved;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(id);
+        dest.writeString(theme);
+        dest.writeString(solved);
+    }
 }

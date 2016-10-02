@@ -5,51 +5,6 @@
     "theme": "green",
     "quizzes": [
       {
-        "type": "four-quarter",
-        "question": "Name the Italian, semi-soft, rich cheese with blue veins through it.",
-        "options": [
-          "Ricotta",
-          "Blue Cheese",
-          "Gorgonzola",
-          "Parmesan"
-        ],
-        "answer": [2]
-      },
-      {
-        "type": "true-false",
-        "question": "Coffee beans contain more caffeine than tea leaves.",
-        "answer": false
-      },
-      {
-        "type": "multi-select",
-        "question": "What are the three ingredients in mead (spices excluded)?",
-        "options": [
-          "Sugar",
-          "Honey",
-          "Cinnamon",
-          "Water",
-          "Brown Sugar",
-          "Yeast",
-          "Salt"
-        ],
-        "answer": [
-          1,
-          3,
-          5
-        ]
-      },
-      {
-        "type": "four-quarter",
-        "question": "What crop does the Colorado Beetle attack?",
-        "options": [
-          "Corn",
-          "Garlic",
-          "Potato",
-          "Wheat"
-        ],
-        "answer": [2]
-      },
-      {
         "type": "single-select-item",
         "question": "What vegetable did Mark Twain describe as “cabbage with a college education”?",
         "options": [
@@ -58,30 +13,18 @@
           "Cauliflower",
           "Kale"
         ],
-        "answer": [2]
-      },
-      {
-        "type": "fill-blank",
-        "question": "What name is given to a sugar syrup which is gently heated until it browns?",
-        "answer": "Caramel"
+        "answer": 2
       },
       {
         "type": "single-select",
-        "question": "In Which city was chop suey invented?",
+        "question": "Who played Dr. John Hammond in Jurassic Park?",
         "options": [
-          "Hong Kong",
-          "Taipei",
-          "New York",
-          "San Francisco"
+          "Anthony Hopkins",
+          "Jeff Goldblum",
+          "Richard Attenborough",
+          "Emmet Brown"
         ],
-        "answer": [3]
-      },
-      {
-        "type": "picker",
-        "question": "One of the fattiest fishes is salmon. 4 ounces contains how many grams of fat?",
-        "min": 1,
-        "max": 10,
-        "answer": 9
+        "answer": 2
       },
       {
         "type": "fill-blank",
@@ -97,7 +40,7 @@
           "Flock",
           "Pod"
         ],
-        "answer": [1]
+        "answer": 1
       }
     ],
     "scores": [
@@ -133,7 +76,7 @@
           "Empire State Building",
           "The New York Times Building"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "multi-select",
@@ -174,7 +117,7 @@
             "Coyote"
           ]
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "single-select-item",
@@ -185,7 +128,7 @@
           "A Clockwork Orange",
           "Play Misty for me"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "picker",
@@ -213,7 +156,7 @@
           "The Bermuda Triangle",
           "Black Sea"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "single-select",
@@ -224,7 +167,7 @@
           "Cashew",
           "Pistachio"
         ],
-        "answer": [1]
+        "answer": 1
       }
     ],
     "scores": [
@@ -262,7 +205,7 @@
           "Lyndon B. Johnson",
           "Ronald Reagan"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "true-false",
@@ -305,7 +248,7 @@
           "General",
           "Captain"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "picker",
@@ -324,7 +267,7 @@
           "Réunion",
           "New Caledonia"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "multi-select",
@@ -446,7 +389,7 @@
           "Seoul",
           "Sydney"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "fill-blank",
@@ -479,7 +422,7 @@
           "Antarctica",
           "Argentina"
         ],
-        "answer": [2]
+        "answer": 2
       }
     ],
     "scores": [
@@ -518,7 +461,7 @@
           "Falcon",
           "Sparrow"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "four-quarter",
@@ -529,7 +472,7 @@
           "Cheetah",
           "Siamese"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "toggle-translate",
@@ -612,7 +555,7 @@
           "Worm",
           "Bear"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "fill-two-blanks",
@@ -674,7 +617,7 @@
           "Watchmen",
           "Forbidden Planet"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "single-select",
@@ -685,7 +628,7 @@
           "Mearth",
           "Magnus"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "picker",
@@ -721,7 +664,7 @@
           "Jaws",
           "The Color Purple"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "fill-blank",
@@ -757,7 +700,7 @@
           "George",
           "Ringo"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "multi-select",
@@ -822,7 +765,7 @@
           "Hugga Wugga",
           "Wild Thing"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "true-false",
@@ -846,7 +789,7 @@
           "I Get Around",
           "Good Vibrations"
         ],
-        "answer": [3]
+        "answer": 3
       },
       {
         "type": "four-quarter",
@@ -857,7 +800,7 @@
           "Gorrilla",
           "Pitbull"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "single-select-item",
@@ -868,7 +811,7 @@
           "White Rose",
           "Black Moth"
         ],
-        "answer": [0]
+        "answer": 0
       }
     ],
     "scores": [
@@ -904,7 +847,7 @@
           "Eliminate",
           "Execute"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "picker",
@@ -919,34 +862,15 @@
         "answer": true
       },
       {
-        "type": "multi-select",
-        "question": "Which two British actors have played Obi Wan Kenobi in the Star Wars films?",
+        "type": "single-select",
+        "question": "Who played Dr. John Hammond in Jurassic Park?",
         "options": [
-          "Sir Alec Guinness",
-          "David Prowse",
-          "James Earl Jones",
-          "Harrison Ford",
-          "Ewan McGregor",
-          "Anthony Daniels"
+          "Anthony Hopkins",
+          "Jeff Goldblum",
+          "Richard Attenborough",
+          "Emmet Brown"
         ],
-        "answer": [
-          0,
-          4
-        ]
-      },
-      {
-        "type": "picker",
-        "question": "How many Oscars were won by the film Matrix at the 2000 Academy Awards ceremony?",
-        "min": 0,
-        "max": 11,
-        "answer": 4
-      },
-      {
-        "type": "fill-blank",
-        "question": "Late American artist Andy Warhol observed:",
-        "start": "“Two people kissing always looks like ",
-        "end": ".”",
-        "answer": "Fish"
+        "answer": 2
       },
       {
         "type": "single-select",
@@ -957,7 +881,29 @@
           "Richard Attenborough",
           "Emmet Brown"
         ],
-        "answer": [2]
+        "answer": 2
+      },
+      {
+        "type": "single-select",
+        "question": "Who played Dr. John Hammond in Jurassic Park?",
+        "options": [
+          "Anthony Hopkins",
+          "Jeff Goldblum",
+          "Richard Attenborough",
+          "Emmet Brown"
+        ],
+        "answer": 2
+      },
+      {
+        "type": "single-select",
+        "question": "Who played Dr. John Hammond in Jurassic Park?",
+        "options": [
+          "Anthony Hopkins",
+          "Jeff Goldblum",
+          "Richard Attenborough",
+          "Emmet Brown"
+        ],
+        "answer": 2
       },
       {
         "type": "picker",
@@ -1005,7 +951,7 @@
           "India",
           "USA"
         ],
-        "answer": [2]
+        "answer": 2
       },
       {
         "type": "true-false",
@@ -1082,7 +1028,7 @@
           "Big Bill Tilden",
           "Bobby Jones"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "single-select-item",
@@ -1093,7 +1039,7 @@
           "Pumptrack",
           "Speedway"
         ],
-        "answer": [1]
+        "answer": 1
       },
       {
         "type": "fill-blank",

@@ -108,4 +108,10 @@
     <string name="title_activity_modules">Modules</string>
     <string name="title_activity_quiz">QuizActivity</string>
     <string name="title_activity_p2_ptest">P2PTestActivity</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="action_wallet">Wallet</string>
+    <string name="logout">Logout</string>
 </resources>
