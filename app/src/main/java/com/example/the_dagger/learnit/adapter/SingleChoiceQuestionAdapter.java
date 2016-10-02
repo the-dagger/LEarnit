@@ -2,7 +2,6 @@ package com.example.the_dagger.learnit.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,7 +83,7 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
                 public void onCheckedChanged(RadioGroup radioGroup, int i) {
                     View radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
                     index = radioGroup.indexOfChild(radioButton);
-                    Log.e("Index", String.valueOf(index) + " and " + String.valueOf(i));
+//                    Log.e("Index", String.valueOf(index) + " and " + String.valueOf(i));
                 }
             });
         }

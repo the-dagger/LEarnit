@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.the_dagger.learnit.R;
@@ -24,12 +25,12 @@ public class QuizActivity extends AppCompatActivity {
     int answer[] = new int[10];
     int position = 0;
     RecyclerView quizRecyclerView;
-
+    TextView moduleCompletedMoney;
 
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this,"You can not exit the app",Toast.LENGTH_SHORT);
+        Toast.makeText(this,"You can not exit the app",Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -38,8 +39,6 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        View rootView = getLayoutInflater().inflate(R.layout.question_single_choice, null);
-
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionArrayList = getIntent().getParcelableArrayListExtra("singleChoiceQuestion");
         answer = getIntent().getIntArrayExtra("answer");
         Log.e("Size", String.valueOf(singleChoiceQuestionArrayList.size()));
@@ -61,11 +60,12 @@ public class QuizActivity extends AppCompatActivity {
                 Log.e("Position", String.valueOf(position));
                 if (position == 10) {
                     Intent resultIntent = new Intent(QuizActivity.this,FullscreenActivity.class);
+                    resultIntent.putExtra("correctAnswer",correctCounter);
                     startActivity(resultIntent);
                     QuizActivity.this.finish();
                 }
-//                Log.e("Correct Answer", String.valueOf(answer[position]));
                 try {
+                    Log.e("Correct Answer", String.valueOf(answer[position]));
                     if (singleChoiceQuestionAdapter.index == answer[position] && position<10) {
                         correctCounter++;
                     }
@@ -78,6 +78,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
     }
+
 
 //    public View onCreateView(LayoutInflater inflater,
 //                             ViewGroup container,
