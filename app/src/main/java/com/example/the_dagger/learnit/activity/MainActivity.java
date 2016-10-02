@@ -1,22 +1,31 @@
 package com.example.the_dagger.learnit.activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.adapter.CategoryAdapter;
 import com.example.the_dagger.learnit.model.Categories;
 import com.example.the_dagger.learnit.model.SingleChoiceQuestion;
+import com.example.the_dagger.learnit.utility.Constants;
+import com.example.the_dagger.learnit.utility.SuperPrefs;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +59,27 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_logout:
                 // Set the text color to green
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Do you want to log out ?");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences preferences = getApplicationContext().getSharedPreferences(Constants.TAG_SHARED_PREF, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.remove("access_token");
+                        editor.apply();
+                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builder.show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
