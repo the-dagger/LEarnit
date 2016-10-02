@@ -12,20 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.adapter.CategoryAdapter;
 import com.example.the_dagger.learnit.model.Categories;
 import com.example.the_dagger.learnit.model.SingleChoiceQuestion;
 import com.example.the_dagger.learnit.utility.Constants;
-import com.example.the_dagger.learnit.utility.SuperPrefs;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -55,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch(item.getItemId()){
             case R.id.action_wallet:
+                Intent intent = new Intent(this,WalletActivity.class);
+                startActivity(intent);
                 // Set the text color to red
                 return true;
             case R.id.action_logout:

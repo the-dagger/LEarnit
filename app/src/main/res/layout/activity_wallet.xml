@@ -18,23 +18,32 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
         android:textStyle="bold"
         android:text="Your current balance is"
         />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="120dp"
         android:id="@+id/currentBalance"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:textSize="72sp"
         android:gravity="center"
         android:text="40 ₹"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Some items which you may like!"
+        android:gravity="center"
+        android:textSize="24sp"/>
+
     <LinearLayout
-        android:layout_margin="16dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -48,8 +57,8 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/bat"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -59,8 +68,8 @@
                     android:layout_height="wrap_content"
                     android:text="350 ₹"/>
                 <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/goku"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -81,8 +90,8 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/batman"/>
                 <TextView
                     android:layout_width="match_parent"
@@ -92,8 +101,8 @@
                     android:layout_height="wrap_content"
                     android:text="600 ₹"/>
                 <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:src="@drawable/nes"/>
                 <TextView
                     android:layout_width="match_parent"

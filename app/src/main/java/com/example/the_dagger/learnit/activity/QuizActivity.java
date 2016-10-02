@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.adapter.SingleChoiceQuestionAdapter;
@@ -25,6 +26,12 @@ public class QuizActivity extends AppCompatActivity {
     int position = 0;
     RecyclerView quizRecyclerView;
 
+
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this,"You can not exit the app",Toast.LENGTH_SHORT);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

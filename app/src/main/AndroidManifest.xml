@@ -46,7 +46,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WalletActivity"></activity>
+        <activity android:name=".activity.WalletActivity"
+            android:parentActivityName="com.example.the_dagger.learnit.activity.MainActivity">
+        </activity>
     </application>
 
 </manifest>
