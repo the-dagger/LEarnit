@@ -61,6 +61,7 @@ public class Paytm {
 
     }
 
+    // Used during singin
     public void validateOtp(final Map<String,
             String> header, JSONObject body,
                             Response.Listener<JSONObject> successListener,
@@ -93,6 +94,7 @@ public class Paytm {
 
     }
 
+    // Used at the end of request money
     public void validateToken(final Map<String,
             String> header, JSONObject body,
                             Response.Listener<JSONObject> successListener,
@@ -185,6 +187,7 @@ public class Paytm {
 
             jsonObject.put("request", request);
             jsonObject.put("ipAddress", ipAddress);
+            jsonObject.put("platformName", platformName);
             jsonObject.put("operationType", operationType);
             jsonObject.put("channel", "");
             jsonObject.put("version", "");

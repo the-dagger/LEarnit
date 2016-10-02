@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:ems="10" >
+        android:ems="10"
+        >
 
         <requestFocus />
     </EditText>
@@ -72,11 +73,11 @@
         android:layout_height="wrap_content"
         android:text="Login" />
 
-    <Button
-        android:id="@+id/SignUpButton"
-        android:layout_gravity="center"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:text="SignUp" />
+    <!--<Button-->
+        <!--android:id="@+id/SignUpButton"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="SignUp" />-->
 
 </LinearLayout>
