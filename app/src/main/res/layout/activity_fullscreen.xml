@@ -5,17 +5,39 @@
     android:background="#0099cc"
     tools:context="com.example.the_dagger.learnit.activity.FullscreenActivity">
 
-    <TextView
-        android:id="@+id/fullscreen_content"
+    
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="8dp"
+            android:text="Your Score"
+            android:textStyle="bold"
+            android:textSize="36sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:id="@+id/score"
+            android:gravity="center"
+            android:text="Your got 5 out of 10 answers orrect"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="42dp"
+            android:id="@+id/balance"
+            android:gravity="center"
+            android:text="Your wallet balance is 150 Rupees"
+            android:textSize="20dp"/>
+    </LinearLayout>
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
 

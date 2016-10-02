@@ -1,6 +1,6 @@
 [
   {
-    "name": "Food & Drink",
+    "name": "Maths",
     "id": "food",
     "theme": "green",
     "quizzes": [
@@ -58,7 +58,7 @@
     "solved": "false"
   },
   {
-    "name": "General Knowledge",
+    "name": "Science",
     "id": "knowledge",
     "theme": "yellow",
     "quizzes": [
