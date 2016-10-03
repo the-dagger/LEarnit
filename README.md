@@ -6,3 +6,7 @@ On completing a module, payment is sent from parentâ€™s paytm wallet to studentâ
 TODO
 ====
 Add more details 
+
+MADE BY
+====
+@grgvineet, @aayusharora and @the-dagger
