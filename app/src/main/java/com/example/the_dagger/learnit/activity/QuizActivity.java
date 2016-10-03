@@ -79,7 +79,11 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        QuizActivity.this.finish();
+    }
 //    public View onCreateView(LayoutInflater inflater,
 //                             ViewGroup container,
 //                             Bundle savedInstanceState) {
