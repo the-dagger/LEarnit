@@ -9,4 +9,4 @@ Add more details
 
 MADE BY
 ====
-@grgvineet, @aayusharora and @the-dagger
+[@grgvineet](https://github.com/grgvineet), [@aayusharora](https://github.com/aayusharora) and [@the-dagger](https://github.com/the-dagger)
