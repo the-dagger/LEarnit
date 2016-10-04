@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!validate()) {
-                    return;
+                        return;
                 }
 
                 SuperPrefs.newInstance(getApplicationContext()).setString("child_phone", childphone.getText().toString());
@@ -132,9 +132,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
-
-    public boolean validate() {
+    private boolean validate() {
         boolean valid = true;
         String sName = username.getText().toString();
         String sAge = age.getText().toString();
@@ -142,12 +140,10 @@ public class LoginActivity extends AppCompatActivity {
         String sParentPhone = parentphone.getText().toString();
         String sPassword = password.getText().toString();
 
-
         if (sName.isEmpty() || sName.length() < 3) {
             valid = false;
             username.setError("Enter at Least Three Characters");
         }
-
         if (sAge.isEmpty() || Integer.parseInt(sAge) < 0) {
             valid=false;
             age.setError("Enter a valid date");
@@ -163,9 +159,7 @@ public class LoginActivity extends AppCompatActivity {
         if (sPassword.isEmpty() || sPassword.length() < 4) {
             valid = false;
             password.setError("Password must be of at least 4 digits");
-
         }
-
         return valid;
     }
 
