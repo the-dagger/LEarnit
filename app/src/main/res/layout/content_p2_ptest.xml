@@ -16,37 +16,39 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Parent mobile"
+        android:hint="@string/prompt_parent_mobile"
+        android:inputType="phone"
         android:id="@+id/etParentMobile"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Child Phone number"
+        android:inputType="phone"
+        android:hint="@string/prompt_child_mobile"
         android:id="@+id/etChilePhone"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Singin otp"
+        android:text="@string/prompt_signin_otp"
         android:id="@+id/bSinginOtp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Otp"
+        android:hint="@string/prompt_otp"
         android:id="@+id/etOtp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Validate Otp"
+        android:text="@string/prompt_validate_otp"
         android:id="@+id/bValidateOtp"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Transfer Money"
+        android:text="@string/prompt_transfer_money"
         android:id="@+id/bTransfer"/>
 
 </LinearLayout>

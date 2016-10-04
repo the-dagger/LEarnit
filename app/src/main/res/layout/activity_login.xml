@@ -12,57 +12,49 @@
 
     <EditText
         android:id="@+id/username"
-        android:hint="Name"
+        android:hint="@string/prompt_name"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:ems="10"
-        >
+        android:maxLines="1"
+        android:inputType="text"
+        android:ems="10" >
 
         <requestFocus />
     </EditText>
 
     <EditText
         android:id="@+id/age"
-        android:hint="Age"
+        android:hint="@string/prompt_age"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:inputType="number"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
+        android:ems="10" />
 
     <EditText
         android:id="@+id/childPhone"
-        android:hint="Phone Number"
+        android:hint="@string/prompt_phone_number"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:inputType="number"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="phone"
+        android:ems="10" />
 
     <EditText
         android:id="@+id/parentPhone"
-        android:hint="Parent's Phone Number"
+        android:hint="@string/prompt_parent_phone_no"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:inputType="number"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="phone"
+        android:ems="10" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="250dp"
-        android:hint="Password"
+        android:hint="@string/prompt_password"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -74,7 +66,7 @@
         android:layout_marginTop="30dp"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:text="Login" />
+        android:text="@string/action_login" />
 
     <!--<Button-->
         <!--android:id="@+id/SignUpButton"-->
