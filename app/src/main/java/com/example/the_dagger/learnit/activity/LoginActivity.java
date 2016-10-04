@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -59,10 +60,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().isEmpty() || age.getText().toString().isEmpty() || childphone.getText().toString().isEmpty() || parentphone.toString().isEmpty() ||
-                        password.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_LONG).show();
-                    return;
+                if (!validate()) {
+                        return;
                 }
 
                 SuperPrefs.newInstance(getApplicationContext()).setString("child_phone", childphone.getText().toString());
@@ -101,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int which) {
                                     String otp = input.getText().toString();
                                     try {
-                                        validateToken(otp, response.getString("state"), true );
+                                        validateToken(otp, response.getString("state"), true);
                                         loginStudent(LoginActivity.this, childphone.getText().toString());
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -132,6 +131,38 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private boolean validate() {
+        boolean valid = true;
+        String sName = username.getText().toString();
+        String sAge = age.getText().toString();
+        String sChildPhone = childphone.getText().toString();
+        String sParentPhone = parentphone.getText().toString();
+        String sPassword = password.getText().toString();
+
+        if (sName.isEmpty() || sName.length() < 3) {
+            valid = false;
+            username.setError("Enter at Least Three Characters");
+        }
+        if (sAge.isEmpty() || Integer.parseInt(sAge) < 0) {
+            valid=false;
+            age.setError("Enter a valid date");
+        }
+        if (sChildPhone.isEmpty() || !Patterns.PHONE.matcher(sChildPhone).matches()) {
+            valid = false;
+            childphone.setError("Enter a Valid Mobile no");
+        }
+        if (sParentPhone.isEmpty() || !Patterns.PHONE.matcher(sParentPhone).matches()) {
+            valid = false;
+            parentphone.setError("Enter a Valid Mobile no");
+        }
+        if (sPassword.isEmpty() || sPassword.length() < 4) {
+            valid = false;
+            password.setError("Password must be of at least 4 digits");
+        }
+        return valid;
+    }
+
 
     void loginStudent(final Context contexti, String childphone) {
         Paytm paytm = Paytm.getInstance();
@@ -198,7 +229,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
     }
 
-    void validateToken (String otp, String state, final boolean isParent) {
+    void validateToken(String otp, String state, final boolean isParent) {
         try {
             Paytm paytm = Paytm.getInstance();
             Map<String, String> header = new HashMap<String, String>();
@@ -214,7 +245,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.e("Validate", response.toString(4));
                         SuperPrefs superPrefs = SuperPrefs.newInstance(getApplicationContext());
                         String key = isParent ? "access_token" : "child_access_token";
-                        superPrefs.setString(key,response.getString("access_token"));
+                        superPrefs.setString(key, response.getString("access_token"));
                         SuperPrefs.newInstance(getApplicationContext());
 
                         if (!isParent) {
