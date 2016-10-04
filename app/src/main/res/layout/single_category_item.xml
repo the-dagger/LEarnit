@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:textSize="24sp"
                 android:layout_gravity="center"
-                android:text="Lorem Ipsum"
+                android:text="@string/random_text"
                 android:layout_height="wrap_content"
                 android:id="@+id/category_title" />
 

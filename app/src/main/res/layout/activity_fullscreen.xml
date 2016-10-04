@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="8dp"
-            android:text="Your Score"
+            android:text="@string/prompt_score"
             android:textStyle="bold"
             android:textSize="36sp"/>
 
@@ -26,7 +26,7 @@
             android:layout_marginTop="42dp"
             android:id="@+id/score"
             android:gravity="center"
-            android:text="Your got 5 out of 10 answers orrect"
+            android:text="@string/prompt_half_way"
             android:textSize="20dp"/>
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_marginTop="42dp"
             android:id="@+id/amountWon"
             android:gravity="center"
-            android:text="Your wallet balance is 150 Rupees"
+            android:text="@string/prompt_wallet_balance"
             android:textSize="20dp"/>
 
         <Button
@@ -46,7 +46,7 @@
             android:layout_gravity="center"
             android:textColor="#fff"
             android:onClick="transferMoney"
-            android:text="Request Money"/>
+            android:text="@string/action_request_money"/>
     </LinearLayout>
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->

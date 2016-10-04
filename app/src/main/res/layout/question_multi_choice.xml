@@ -24,25 +24,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/multipleZero"
-                    android:text="Option 1"/>
+                    android:text="@string/option_one"/>
 
                 <android.support.v7.widget.AppCompatCheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/multipleOne"
-                    android:text="Option 1"/>
+                    android:text="@string/option_one"/>
 
                 <android.support.v7.widget.AppCompatCheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/multipleTwo"
-                    android:text="Option 1"/>
+                    android:text="@string/option_one"/>
 
                 <android.support.v7.widget.AppCompatCheckBox
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/multipleThree"
-                    android:text="Option 1"/>
+                    android:text="@string/option_one"/>
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>

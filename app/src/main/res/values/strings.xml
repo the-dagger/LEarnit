@@ -2,18 +2,47 @@
     <string name="app_name">lEarnIt</string>
 
     <!-- Strings related to login -->
+    <string name="prompt_name">Name</string>
+    <string name="prompt_age">Age</string>
+    <string name="prompt_phone_number">Phone Number</string>
+    <string name="prompt_parent_phone_no">Parents Phone Number</string>
+    <string name="prompt_password">Password</string>
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="action_login">Login</string>
+
+    <!-- Strings in activity_fullscreen -->
+    <string name="prompt_score">Your Score</string>
+    <string name="prompt_half_way">You have got 5 out of 10 answers correct</string>
+    <string name="prompt_wallet_balance">Your wallet balance is 150 Rupees</string>
+    <string name="action_request_money">Request Money</string>
+
+    <!-- Strings in activity_wallet -->
+    <string name="prompt_current_balance">Your current balance is</string>
+    <string name="prompt_rupee_forty">40 ₹</string>
+    <string name="prompt_item_like">Some items which you may like!</string>
+    <string name="prompt_rupee_three_fifty">350 ₹</string>
+    <string name="prompt_rupee_three_hundred">300 ₹</string>
+    <string name="prompt_rupee_six_hundred">600 ₹</string>
+    <string name="prompt_rupee_seven_hundred_fifty">750 ₹</string>
+
+    <!-- Strings in content_p2_ptest -->
+    <string name="prompt_parent_mobile">Parent mobile</string>
+    <string name="prompt_child_mobile">Child phone number</string>
+    <string name="prompt_signin_otp">Signin OTP</string>
+    <string name="prompt_otp">OTP</string>
+    <string name="prompt_validate_otp">Validate OTP</string>
+    <string name="prompt_transfer_money">Transfer Money</string>
+
+    <!-- Strings in question_multi_choice -->
+    <string name="option_one">Option 1</string>
+
+    <!-- Strings in question_single_choice -->
+    <string name="random_text">Lorem Ipsum</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="option_3">Option 3</string>
+    <string name="option_4">Option 4</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
