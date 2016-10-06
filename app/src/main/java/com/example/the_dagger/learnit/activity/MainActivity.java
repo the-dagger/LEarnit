@@ -35,6 +35,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static com.example.the_dagger.learnit.R.raw.questions;
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences preferences = getApplicationContext().getSharedPreferences(Constants.TAG_SHARED_PREF, Context.MODE_PRIVATE);
+                        SharedPreferences preferences = MainActivity.this.getSharedPreferences(Constants.TAG_SHARED_PREF, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.remove("access_token");
                         editor.apply();

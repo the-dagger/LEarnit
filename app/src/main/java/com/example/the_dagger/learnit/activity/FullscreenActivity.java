@@ -204,14 +204,14 @@ public class FullscreenActivity extends AppCompatActivity {
     public void transferMoney(final View view) {
 
         int amount = (int)(correctCounter * 1.5);
-        String ssoToken = SuperPrefs.newInstance(getApplicationContext()).getString("access_token");
+        String ssoToken = SuperPrefs.newInstance(FullscreenActivity.this).getString("access_token");
 
         final Paytm paytm = Paytm.getInstance();
 
         Map<String, String> header = new HashMap<>();
         header.put("ssotoken", ssoToken);
 
-        JSONObject body = paytm.getP2pTransferBody(0, 0, SuperPrefs.newInstance(getApplicationContext()).getString("child_phone"), amount, "INR", "Module Completed", "127.0.0.1", "PayTm", "P2P_TRANSFER");
+        JSONObject body = paytm.getP2pTransferBody(0, 0, SuperPrefs.newInstance(FullscreenActivity.this).getString("child_phone"), amount, "INR", "Module Completed", "127.0.0.1", "PayTm", "P2P_TRANSFER");
 
         final ProgressDialog progressDialog = new ProgressDialog(view.getContext());
         progressDialog.setTitle("Transferring money into your account");

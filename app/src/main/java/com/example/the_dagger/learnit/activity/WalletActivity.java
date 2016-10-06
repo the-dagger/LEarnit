@@ -28,8 +28,8 @@ public class WalletActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.currentBalance);
 
-        textView.setText(SuperPrefs.newInstance(getApplicationContext()).getInt("balance", 0) + " ₹");
-        String access_token = SuperPrefs.newInstance(getApplicationContext()).getString("child_access_token");
+        textView.setText(SuperPrefs.newInstance(WalletActivity.this).getInt("balance", 0) + " ₹");
+        String access_token = SuperPrefs.newInstance(WalletActivity.this).getString("child_access_token");
 
         Map<String, String> header = new HashMap<>();
         header.put("ssotoken", access_token);
@@ -41,7 +41,7 @@ public class WalletActivity extends AppCompatActivity {
                 try {
                     JSONObject res = response.getJSONObject("response");
                     int balance = res.getInt("amount");
-                    SuperPrefs.newInstance(getApplicationContext()).setInt("balance", balance);
+                    SuperPrefs.newInstance(WalletActivity.this).setInt("balance", balance);
                     textView.setText(balance + " ₹");
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -50,7 +50,7 @@ public class WalletActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error getting wallet amount", Toast.LENGTH_LONG).show();
+                Toast.makeText(WalletActivity.this, "Error getting wallet amount", Toast.LENGTH_LONG).show();
             }
         });
 
