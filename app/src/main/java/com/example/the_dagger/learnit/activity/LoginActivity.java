@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
 
         loginButton = (Button) findViewById(R.id.Loginbutton);
-        Polley.init(LoginActivity.this);
+        Polley.init(getApplicationContext());
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
