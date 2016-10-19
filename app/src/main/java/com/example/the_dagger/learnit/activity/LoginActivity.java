@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
         context = this;
 
-        if (SuperPrefs.newInstance(getApplicationContext()).stringExists("access_token")) {
+        if (SuperPrefs.newInstance(LoginActivity.this).stringExists("access_token")) {
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                         return;
                 }
 
-                SuperPrefs.newInstance(getApplicationContext()).setString("child_phone", childphone.getText().toString());
+                SuperPrefs.newInstance(LoginActivity.this).setString("child_phone", childphone.getText().toString());
                 Paytm paytm = Paytm.getInstance();
                 Map<String, String> header = new HashMap<String, String>();
                 JSONObject body = paytm.getSinginOtpBody(parentphone.getText().toString(), "staging-hackathalon", "wallet", "token");
@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Internet connection error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Internet connection error", Toast.LENGTH_LONG).show();
                         Log.e("Signin", error.toString());
                     }
                 });
@@ -222,7 +222,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Internet connection error", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Internet connection error", Toast.LENGTH_LONG).show();
                 Log.e("Signin", error.toString());
             }
         });
@@ -243,10 +243,10 @@ public class LoginActivity extends AppCompatActivity {
                         // TODO : Handle Error
 
                         Log.e("Validate", response.toString(4));
-                        SuperPrefs superPrefs = SuperPrefs.newInstance(getApplicationContext());
+                        SuperPrefs superPrefs = SuperPrefs.newInstance(LoginActivity.this);
                         String key = isParent ? "access_token" : "child_access_token";
                         superPrefs.setString(key, response.getString("access_token"));
-                        SuperPrefs.newInstance(getApplicationContext());
+                        SuperPrefs.newInstance(LoginActivity.this);
 
                         if (!isParent) {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
