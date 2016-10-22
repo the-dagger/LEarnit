@@ -37,10 +37,10 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
         int position1 = holder.getAdapterPosition();
         SingleChoiceQuestion singleChoiceQuestion = singleChoiceQuestionArrayList.get(holder.getAdapterPosition());
         if(getItemCount() == -1){
-            holder.question.setText("No Questions at the moment");
+            holder.question.setText(R.string.str_no_question);
         }
         else{
-//            Log.e("Name",singleCategory.getName());
+//            LogUtils.LOGE("Name",singleCategory.getName());
             holder.question.setText(singleChoiceQuestion.getQuestion());
             holder.rb0.setText(singleChoiceQuestion.getOptions().get(0));
             holder.rb1.setText(singleChoiceQuestion.getOptions().get(1));
@@ -83,7 +83,7 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
                 public void onCheckedChanged(RadioGroup radioGroup, int i) {
                     View radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
                     index = radioGroup.indexOfChild(radioButton);
-//                    Log.e("Index", String.valueOf(index) + " and " + String.valueOf(i));
+//                    LogUtils.LOGE("Index", String.valueOf(index) + " and " + String.valueOf(i));
                 }
             });
         }

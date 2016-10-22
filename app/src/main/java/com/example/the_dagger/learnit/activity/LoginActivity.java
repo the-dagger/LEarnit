@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.paytm.Paytm;
 import com.example.the_dagger.learnit.paytm.Polley;
+import com.example.the_dagger.learnit.utility.LogUtils;
 import com.example.the_dagger.learnit.utility.SuperPrefs;
 
 import org.json.JSONException;
@@ -79,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(final JSONObject response) {
-                        Log.e("Singin", response.toString());
+                        LogUtils.LOGE("Singin", response.toString());
                         progressDialog.dismiss();
                         try {
                             signinResponse.put("state", response.get("state"));
@@ -124,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Internet connection error", Toast.LENGTH_LONG).show();
-                        Log.e("Signin", error.toString());
+                        LogUtils.LOGE("Signin", error.toString());
                     }
                 });
                 progressDialog.show();
@@ -179,7 +180,7 @@ public class LoginActivity extends AppCompatActivity {
         paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(final JSONObject response) {
-                Log.e("Singin", response.toString());
+                LogUtils.LOGE("Singin", response.toString());
                 progressDialog.dismiss();
                 try {
                     signinResponse.put("state", response.get("state"));
@@ -223,7 +224,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
                 Toast.makeText(LoginActivity.this, "Internet connection error", Toast.LENGTH_LONG).show();
-                Log.e("Signin", error.toString());
+                LogUtils.LOGE("Signin", error.toString());
             }
         });
         progressDialog.show();
@@ -235,14 +236,14 @@ public class LoginActivity extends AppCompatActivity {
             Map<String, String> header = new HashMap<String, String>();
             header.put("authorization", "Basic " + paytm.getClientIdSecret());
             JSONObject body = paytm.getValidateOtpBody(otp, state);
-            Log.e("Validate", "Body :" + body.toString());
+            LogUtils.LOGE("Validate", "Body :" + body.toString());
             paytm.validateOtp(header, body, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
                         // TODO : Handle Error
 
-                        Log.e("Validate", response.toString(4));
+                        LogUtils.LOGE("Validate", response.toString(4));
                         SuperPrefs superPrefs = SuperPrefs.newInstance(LoginActivity.this);
                         String key = isParent ? "access_token" : "child_access_token";
                         superPrefs.setString(key, response.getString("access_token"));
@@ -260,7 +261,7 @@ public class LoginActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.e("Validate", error.toString());
+                    LogUtils.LOGE("Validate", error.toString());
                 }
             });
         } catch (Exception e) {

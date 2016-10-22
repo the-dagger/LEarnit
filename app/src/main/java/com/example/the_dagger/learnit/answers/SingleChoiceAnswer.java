@@ -7,7 +7,7 @@ import com.example.the_dagger.learnit.abs.Answer;
  */
 public class SingleChoiceAnswer extends Answer {
 
-    int mChoice;
+    private int mChoice;
 
     public SingleChoiceAnswer(int choice) {
         this.mChoice = choice;

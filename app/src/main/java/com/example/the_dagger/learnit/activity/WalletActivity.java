@@ -28,7 +28,7 @@ public class WalletActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.currentBalance);
 
-        textView.setText(SuperPrefs.newInstance(WalletActivity.this).getInt("balance", 0) + " ₹");
+        textView.setText(getString(R.string.str_rupee_wallet,SuperPrefs.newInstance(WalletActivity.this).getInt("balance", 0)));
         String access_token = SuperPrefs.newInstance(WalletActivity.this).getString("child_access_token");
 
         Map<String, String> header = new HashMap<>();
@@ -42,7 +42,7 @@ public class WalletActivity extends AppCompatActivity {
                     JSONObject res = response.getJSONObject("response");
                     int balance = res.getInt("amount");
                     SuperPrefs.newInstance(WalletActivity.this).setInt("balance", balance);
-                    textView.setText(balance + " ₹");
+                    textView.setText(getString(R.string.str_rupee_wallet,balance));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

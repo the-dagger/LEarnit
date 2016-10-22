@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.adapter.SingleChoiceQuestionAdapter;
 import com.example.the_dagger.learnit.model.SingleChoiceQuestion;
+import com.example.the_dagger.learnit.utility.LogUtils;
 
 import java.util.ArrayList;
 
@@ -41,7 +42,7 @@ public class QuizActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionArrayList = getIntent().getParcelableArrayListExtra("singleChoiceQuestion");
         answer = getIntent().getIntArrayExtra("answer");
-        Log.e("Size", String.valueOf(singleChoiceQuestionArrayList.size()));
+        LogUtils.LOGE("Size", String.valueOf(singleChoiceQuestionArrayList.size()));
         final SingleChoiceQuestionAdapter singleChoiceQuestionAdapter = new SingleChoiceQuestionAdapter(this, singleChoiceQuestionArrayList);
         quizRecyclerView = (RecyclerView) findViewById(R.id.quizRv);
         quizRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -56,8 +57,8 @@ public class QuizActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e("Index", String.valueOf(singleChoiceQuestionAdapter.index));
-                Log.e("Position", String.valueOf(position));
+                LogUtils.LOGE("Index", String.valueOf(singleChoiceQuestionAdapter.index));
+                LogUtils.LOGE("Position", String.valueOf(position));
                 if (position == 10) {
                     Intent resultIntent = new Intent(QuizActivity.this,FullscreenActivity.class);
                     resultIntent.putExtra("correctAnswer",correctCounter);
@@ -65,14 +66,14 @@ public class QuizActivity extends AppCompatActivity {
                     QuizActivity.this.finish();
                 }
                 try {
-                    Log.e("Correct Answer", String.valueOf(answer[position]));
+                    LogUtils.LOGE("Correct Answer", String.valueOf(answer[position]));
                     if (singleChoiceQuestionAdapter.index == answer[position] && position<10) {
                         correctCounter++;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Log.e("Correct counter", String.valueOf(correctCounter));
+                LogUtils.LOGE("Correct counter", String.valueOf(correctCounter));
                 quizRecyclerView.smoothScrollToPosition(++position);
                 quizRecyclerView.animate();
             }

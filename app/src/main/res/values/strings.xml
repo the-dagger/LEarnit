@@ -143,4 +143,10 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="action_wallet">Wallet</string>
     <string name="logout">Logout</string>
+
+    <string name="str_rupee_wallet">%1$d ₹</string>
+    <string name="str_rupee_score">You won %1$f ₹</string>
+    <string name="str_no_category">No Categories at the moment</string>
+    <string name="str_no_question">No Questions at the moment</string>
+
 </resources>
