@@ -12,6 +12,7 @@ public class LogUtils {
 
     private static boolean LOGGING_ENABLED = false;
     private static final String DEBUG_BUILD_TYPE = "debug";
+    private static String mLogTag;
 
     static {
         if (BuildConfig.BUILD_TYPE.equals(DEBUG_BUILD_TYPE)) {
@@ -27,6 +28,10 @@ public class LogUtils {
         return LOG_PREFIX + str;
     }
 
+    public static void configureTag(String mTag){
+        mLogTag=mTag;
+    }
+
     /**
      * Don't use this when obfuscating class names!
      */
@@ -34,71 +39,71 @@ public class LogUtils {
         return makeLogTag(cls.getSimpleName());
     }
 
-    public static void LOGD(final String tag, String message) {
-        if (LOGGING_ENABLED){
-            if (Log.isLoggable(tag, Log.DEBUG)) {
-                Log.d(tag, message);
+    public static void LOGD(String message) {
+        if (LOGGING_ENABLED) {
+            if (Log.isLoggable(mLogTag, Log.DEBUG)) {
+                Log.d(mLogTag, message);
             }
         }
     }
 
-    public static void LOGD(final String tag, String message, Throwable cause) {
-        if (LOGGING_ENABLED){
-            if (Log.isLoggable(tag, Log.DEBUG)) {
-                Log.d(tag, message, cause);
+    public static void LOGD(String message, Throwable cause) {
+        if (LOGGING_ENABLED) {
+            if (Log.isLoggable(mLogTag, Log.DEBUG)) {
+                Log.d(mLogTag, message, cause);
             }
         }
     }
 
-    public static void LOGV(final String tag, String message) {
+    public static void LOGV( String message) {
         if (LOGGING_ENABLED) {
-            if (Log.isLoggable(tag, Log.VERBOSE)) {
-                Log.v(tag, message);
+            if (Log.isLoggable(mLogTag, Log.VERBOSE)) {
+                Log.v(mLogTag, message);
             }
         }
     }
 
-    public static void LOGV(final String tag, String message, Throwable cause) {
+    public static void LOGV( String message, Throwable cause) {
         if (LOGGING_ENABLED) {
-            if (Log.isLoggable(tag, Log.VERBOSE)) {
-                Log.v(tag, message, cause);
+            if (Log.isLoggable(mLogTag, Log.VERBOSE)) {
+                Log.v(mLogTag, message, cause);
             }
         }
     }
 
-    public static void LOGI(final String tag, String message) {
+    public static void LOGI( String message) {
         if (LOGGING_ENABLED) {
-            Log.i(tag, message);
+            Log.i(mLogTag, message);
         }
     }
 
-    public static void LOGI(final String tag, String message, Throwable cause) {
+    public static void LOGI( String message, Throwable cause) {
         if (LOGGING_ENABLED) {
-            Log.i(tag, message, cause);
+            Log.i(mLogTag, message, cause);
         }
     }
 
-    public static void LOGW(final String tag, String message) {
+    public static void LOGW( String message) {
         if (LOGGING_ENABLED) {
-            Log.w(tag, message);
+            Log.w(mLogTag, message);
         }
     }
 
     public static void LOGW(final String tag, String message, Throwable cause) {
         if (LOGGING_ENABLED) {
-            Log.w(tag, message, cause);
+            Log.w(mLogTag, message, cause);
         }
     }
 
-    public static void LOGE(final String tag, String message) {
-        if (LOGGING_ENABLED){
-            Log.e(tag, message);
-        }
-    }
-
-    public static void LOGE(final String tag, String message, Throwable cause) {
+    public static void LOGE( String message) {
         if (LOGGING_ENABLED) {
-            Log.e(tag, message, cause);
+            Log.e(mLogTag, message);
+        }
+    }
+
+    public static void LOGE( String message, Throwable cause) {
+        if (LOGGING_ENABLED) {
+            Log.e(mLogTag, message, cause);
         }
     }
 

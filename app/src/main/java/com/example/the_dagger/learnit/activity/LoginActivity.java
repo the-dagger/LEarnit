@@ -35,12 +35,13 @@ public class LoginActivity extends AppCompatActivity {
     EditText username, age, childphone, parentphone, password;
     Button loginButton;
     Context context;
+    private String TAG=LogUtils.makeLogTag(LoginActivity.class.getSimpleName());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        LogUtils.configureTag(TAG);
         context = this;
 
         if (SuperPrefs.newInstance(LoginActivity.this).stringExists("access_token")) {
@@ -80,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(final JSONObject response) {
-                        LogUtils.LOGE("Singin", response.toString());
+                        LogUtils.LOGE("Singin:"+response.toString());
                         progressDialog.dismiss();
                         try {
                             signinResponse.put("state", response.get("state"));
@@ -125,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Internet connection error", Toast.LENGTH_LONG).show();
-                        LogUtils.LOGE("Signin", error.toString());
+                        LogUtils.LOGE("Signin:"+error.toString());
                     }
                 });
                 progressDialog.show();
@@ -180,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
         paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(final JSONObject response) {
-                LogUtils.LOGE("Singin", response.toString());
+                LogUtils.LOGE("Signin:"+response.toString());
                 progressDialog.dismiss();
                 try {
                     signinResponse.put("state", response.get("state"));
@@ -224,7 +225,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
                 Toast.makeText(LoginActivity.this, "Internet connection error", Toast.LENGTH_LONG).show();
-                LogUtils.LOGE("Signin", error.toString());
+                LogUtils.LOGE("Signin:"+error.toString());
             }
         });
         progressDialog.show();
@@ -236,14 +237,14 @@ public class LoginActivity extends AppCompatActivity {
             Map<String, String> header = new HashMap<String, String>();
             header.put("authorization", "Basic " + paytm.getClientIdSecret());
             JSONObject body = paytm.getValidateOtpBody(otp, state);
-            LogUtils.LOGE("Validate", "Body :" + body.toString());
+            LogUtils.LOGE("Validate Body :" + body.toString());
             paytm.validateOtp(header, body, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
                         // TODO : Handle Error
 
-                        LogUtils.LOGE("Validate", response.toString(4));
+                        LogUtils.LOGE("Validate:"+response.toString(4));
                         SuperPrefs superPrefs = SuperPrefs.newInstance(LoginActivity.this);
                         String key = isParent ? "access_token" : "child_access_token";
                         superPrefs.setString(key, response.getString("access_token"));
@@ -261,7 +262,7 @@ public class LoginActivity extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    LogUtils.LOGE("Validate", error.toString());
+                    LogUtils.LOGE( "Validate"+error.toString());
                 }
             });
         } catch (Exception e) {

@@ -42,7 +42,7 @@ import static com.example.the_dagger.learnit.R.raw.questions;
 public class MainActivity extends AppCompatActivity {
 
     JSONObject singleCategory;
-
+    private String TAG=LogUtils.makeLogTag(MainActivity.class.getSimpleName());
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -94,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        LogUtils.configureTag(TAG);
         List<Categories> categoryList = getCategories();
-        LogUtils.LOGE("CategoryListSIze", String.valueOf(categoryList.size()));
+        LogUtils.LOGE( "CategoryListSIze"+String.valueOf(categoryList.size()));
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionList = new ArrayList<>();
         Set<SingleChoiceQuestion> singleChoiceQuestionsSet = new LinkedHashSet<>();
         for(int i=0;i<categoryList.size();i++){
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 if(singleChoiceQuestionsSet!=null || singleChoiceQuestionsSet.size()>0){
                     if(!singleChoiceQuestionsSet.equals(categoryList.get(i).getQuizzes().get(j))){
                         singleChoiceQuestionList.add(categoryList.get(i).getQuizzes().get(j));
-                        LogUtils.LOGE("Quizzes",categoryList.get(i).getQuizzes().get(j).getQuestion());
+                        LogUtils.LOGE("Quizzes"+categoryList.get(i).getQuizzes().get(j).getQuestion());
                     }
                 }
                 singleChoiceQuestionsSet.add(categoryList.get(i).getQuizzes().get(j));
@@ -114,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView categoryRv = (RecyclerView) findViewById(R.id.categoryRv);
         categoryRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         categoryRv.setAdapter(categoryAdapter);
-        LogUtils.LOGE("List", String.valueOf(categoryList.size()));
+        LogUtils.LOGE("List"+ String.valueOf(categoryList.size()));
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             jsonArray = new JSONArray(convertStreamToString(is));
             for (j = 0; j < jsonArray.length(); j++) {
                 singleCategory = jsonArray.getJSONObject(j);
-                LogUtils.LOGE("Categories", String.valueOf(singleCategory.get("name")));
+                LogUtils.LOGE("Categories"+ String.valueOf(singleCategory.get("name")));
                 categories.add(new Categories(singleCategory));
                 for(int i=0;i<singleCategory.getJSONArray("quizzes").length();i++) {
                     if (singleCategory.getJSONArray("quizzes").getJSONObject(i).getString("type").equals("single-select"))
@@ -161,14 +162,14 @@ public class MainActivity extends AppCompatActivity {
 //            for (i = 0; i < quizzes.length(); i++) {
 ////                if (quizzes.getJSONObject(i).getString("type").equals("multi-select")) {
 ////                    questionList.add(new MultipleChoiceQuestion(quizzes.getJSONObject(i)));
-//////                        LogUtils.LOGE("QuizMulti", quizzes.getJSONObject(i).getString("question"));
+//////                        LogUtils.LOGE(""QuizMulti:"+ quizzes.getJSONObject(i).getString("question"));
 ////                } else
 //            if (quizzes.getJSONObject(i).getString("type").equals("single-select-item")) {
 //                singleChoiceQuestionList.add(new SingleChoiceQuestion(quizzes.getJSONObject(i)));
 //            }
 ////                } else if (quizzes.getJSONObject(i).getString("type").equals("fill-blank")) {
 ////                    questionList.add(new InputTextQuestion(quizzes.getJSONObject(i)));
-//////                LogUtils.LOGE("QuizSelect", quizzes.getJSONObject(i).getString("question"));
+//////                LogUtils.LOGE("QuizSelect: "+ quizzes.getJSONObject(i).getString("question"));
 ////                }
 //            }
 //        } catch (JSONException e) {
