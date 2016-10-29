@@ -7,7 +7,7 @@ import com.example.the_dagger.learnit.abs.Answer;
  */
 public class InputTextAnswer extends Answer {
 
-    String mAnswer;
+    private String mAnswer;
 
     public InputTextAnswer(String answer) {
         this.mAnswer = answer;

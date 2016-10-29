@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,6 +22,7 @@ import com.example.the_dagger.learnit.adapter.CategoryAdapter;
 import com.example.the_dagger.learnit.model.Categories;
 import com.example.the_dagger.learnit.model.SingleChoiceQuestion;
 import com.example.the_dagger.learnit.utility.Constants;
+import com.example.the_dagger.learnit.utility.LogUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,7 +35,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import static com.example.the_dagger.learnit.R.raw.questions;
@@ -43,7 +42,7 @@ import static com.example.the_dagger.learnit.R.raw.questions;
 public class MainActivity extends AppCompatActivity {
 
     JSONObject singleCategory;
-
+    private String TAG=LogUtils.makeLogTag(MainActivity.class.getSimpleName());
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -95,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        LogUtils.configureTag(TAG);
         List<Categories> categoryList = getCategories();
-        Log.e("CategoryListSIze", String.valueOf(categoryList.size()));
+        LogUtils.LOGE( "CategoryListSIze"+String.valueOf(categoryList.size()));
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionList = new ArrayList<>();
         Set<SingleChoiceQuestion> singleChoiceQuestionsSet = new LinkedHashSet<>();
         for(int i=0;i<categoryList.size();i++){
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 if(singleChoiceQuestionsSet!=null || singleChoiceQuestionsSet.size()>0){
                     if(!singleChoiceQuestionsSet.equals(categoryList.get(i).getQuizzes().get(j))){
                         singleChoiceQuestionList.add(categoryList.get(i).getQuizzes().get(j));
-                        Log.e("Quizzes",categoryList.get(i).getQuizzes().get(j).getQuestion());
+                        LogUtils.LOGE("Quizzes"+categoryList.get(i).getQuizzes().get(j).getQuestion());
                     }
                 }
                 singleChoiceQuestionsSet.add(categoryList.get(i).getQuizzes().get(j));
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView categoryRv = (RecyclerView) findViewById(R.id.categoryRv);
         categoryRv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         categoryRv.setAdapter(categoryAdapter);
-        Log.e("List", String.valueOf(categoryList.size()));
+        LogUtils.LOGE("List"+ String.valueOf(categoryList.size()));
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             jsonArray = new JSONArray(convertStreamToString(is));
             for (j = 0; j < jsonArray.length(); j++) {
                 singleCategory = jsonArray.getJSONObject(j);
-                Log.e("Categories", String.valueOf(singleCategory.get("name")));
+                LogUtils.LOGE("Categories"+ String.valueOf(singleCategory.get("name")));
                 categories.add(new Categories(singleCategory));
                 for(int i=0;i<singleCategory.getJSONArray("quizzes").length();i++) {
                     if (singleCategory.getJSONArray("quizzes").getJSONObject(i).getString("type").equals("single-select"))
@@ -162,14 +162,14 @@ public class MainActivity extends AppCompatActivity {
 //            for (i = 0; i < quizzes.length(); i++) {
 ////                if (quizzes.getJSONObject(i).getString("type").equals("multi-select")) {
 ////                    questionList.add(new MultipleChoiceQuestion(quizzes.getJSONObject(i)));
-//////                        Log.e("QuizMulti", quizzes.getJSONObject(i).getString("question"));
+//////                        LogUtils.LOGE(""QuizMulti:"+ quizzes.getJSONObject(i).getString("question"));
 ////                } else
 //            if (quizzes.getJSONObject(i).getString("type").equals("single-select-item")) {
 //                singleChoiceQuestionList.add(new SingleChoiceQuestion(quizzes.getJSONObject(i)));
 //            }
 ////                } else if (quizzes.getJSONObject(i).getString("type").equals("fill-blank")) {
 ////                    questionList.add(new InputTextQuestion(quizzes.getJSONObject(i)));
-//////                Log.e("QuizSelect", quizzes.getJSONObject(i).getString("question"));
+//////                LogUtils.LOGE("QuizSelect: "+ quizzes.getJSONObject(i).getString("question"));
 ////                }
 //            }
 //        } catch (JSONException e) {

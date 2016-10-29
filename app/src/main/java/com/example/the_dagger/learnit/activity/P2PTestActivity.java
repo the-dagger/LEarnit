@@ -14,6 +14,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.paytm.Paytm;
+import com.example.the_dagger.learnit.utility.LogUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,14 +26,14 @@ public class P2PTestActivity extends AppCompatActivity {
 
     Button bSiginOtp, bValidateOtp, bTransact;
     EditText etParentMobile, etChildMobile, etOtp;
-
+    private String TAG=LogUtils.makeLogTag(P2PTestActivity.class.getSimpleName());
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_p2_ptest);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        LogUtils.configureTag(TAG);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +63,7 @@ public class P2PTestActivity extends AppCompatActivity {
                 paytm.signinOtp(header, body, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("Singin", response.toString());
+                        LogUtils.LOGE("Singin"+response.toString());
                         // TODO : Handle errors
                         try {
                             signinResponse.put("state", response.get("state"));
@@ -73,7 +74,7 @@ public class P2PTestActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Signin", error.toString());
+                        LogUtils.LOGE("Singin"+error.toString());
                     }
                 });
 
@@ -89,12 +90,12 @@ public class P2PTestActivity extends AppCompatActivity {
                     Map<String, String> header = new HashMap<String, String>();
                     header.put("authorization", "Basic " + paytm.getClientIdSecret());
                     JSONObject body = paytm.getValidateOtpBody(etOtp.getText().toString(), signinResponse.getString("state"));
-                    Log.e("Validate", "Body :" + body.toString());
+                    LogUtils.LOGE("Validate Body :" + body.toString());
                     paytm.validateOtp(header, body, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.e("Validate", response.toString(4));
+                                LogUtils.LOGE( "Validate: "+response.toString(4));
                                 validateOtp.put("access_token", response.get("access_token"));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -103,7 +104,7 @@ public class P2PTestActivity extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("Validate", error.toString());
+                            LogUtils.LOGE("Validate:"+ error.toString());
                         }
                     });
                 } catch (Exception e) {
@@ -124,7 +125,7 @@ public class P2PTestActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(JSONObject response) {
                             try {
-                                Log.e("Transact", response.toString(4));
+                                LogUtils.LOGE("Transact: "+ response.toString(4));
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -132,7 +133,7 @@ public class P2PTestActivity extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Log.e("Transact", error.toString());
+                            LogUtils.LOGE("Transact: "+ error.toString());
                         }
                     });
                 } catch (Exception e) {

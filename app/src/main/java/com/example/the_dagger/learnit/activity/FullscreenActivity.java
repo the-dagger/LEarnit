@@ -23,6 +23,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.the_dagger.learnit.R;
 import com.example.the_dagger.learnit.paytm.Paytm;
+import com.example.the_dagger.learnit.utility.LogUtils;
 import com.example.the_dagger.learnit.utility.SuperPrefs;
 
 import org.json.JSONException;
@@ -116,7 +117,7 @@ public class FullscreenActivity extends AppCompatActivity {
         TextView correctScore = (TextView) findViewById(R.id.score);
         correctScore.setText("You got "+correctCounter+" out of 10 Questions Right!" );
         TextView amountWon = (TextView) findViewById(R.id.amountWon);
-        amountWon.setText("You won "+correctCounter*1.5+" ₹");
+        amountWon.setText(getString(R.string.str_rupee_score,correctCounter*1.5));
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -226,7 +227,7 @@ public class FullscreenActivity extends AppCompatActivity {
                     final String state = response.getJSONObject("response").getString("state");
                     final String ssoToken = SuperPrefs.newInstance(view.getContext()).getString("access_token");
 
-                    Log.e("Transact", response.toString(4));
+                    LogUtils.LOGE("Transact", response.toString(4));
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setTitle("Enter OTP");
@@ -288,7 +289,7 @@ public class FullscreenActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Log.e("Transact", error.toString());
+                LogUtils.LOGE("Transact", error.toString());
             }
         });
         progressDialog.show();
