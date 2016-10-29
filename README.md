@@ -3,7 +3,7 @@
 lEarnit is an Android application powered by Paytm which motivates learning in students by rewarding them for studying<br>
 It contains various study modules which have a reward amount associated with them.<br>
 On completing a module, payment is sent from parent’s Paytm wallet to student’s wallet.<br>
-ffff
+
 PAYMENT MODEL
 =============
 It uses Paytm's [P2P payment model](https://goo.gl/UI1hl7) which is not out in public yet.<br>
