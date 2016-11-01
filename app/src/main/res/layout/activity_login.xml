@@ -1,78 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:src="@mipmap/ic_launcher"
-        android:layout_margin="16dp"/>
-
-    <EditText
-        android:id="@+id/username"
-        android:hint="@string/prompt_name"
-        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:maxLines="1"
-        android:inputType="text"
-        android:ems="10" >
+        android:orientation="vertical">
 
-        <requestFocus />
-    </EditText>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/content_description_image_logo"
+            android:src="@mipmap/ic_launcher" />
 
-    <EditText
-        android:id="@+id/age"
-        android:hint="@string/prompt_age"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:inputType="number"
-        android:ems="10" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/prompt_name"
+            android:inputType="text"
+            android:maxLines="1">
 
-    <EditText
-        android:id="@+id/childPhone"
-        android:hint="@string/prompt_phone_number"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:inputType="phone"
-        android:ems="10" />
+            <requestFocus />
+        </EditText>
 
-    <EditText
-        android:id="@+id/parentPhone"
-        android:hint="@string/prompt_parent_phone_no"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:inputType="phone"
-        android:ems="10" />
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/prompt_age"
+            android:inputType="number" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="250dp"
-        android:hint="@string/prompt_password"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword" />
+        <EditText
+            android:id="@+id/childPhone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/prompt_phone_number"
+            android:inputType="phone" />
 
-    <Button
-        android:id="@+id/Loginbutton"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:text="@string/action_login" />
+        <EditText
+            android:id="@+id/parentPhone"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/prompt_parent_phone_no"
+            android:inputType="phone" />
 
-    <!--<Button-->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/Loginbutton"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/action_login" />
+
+        <!--<Button-->
         <!--android:id="@+id/SignUpButton"-->
         <!--android:layout_gravity="center"-->
         <!--android:layout_width="240dp"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:text="SignUp" />-->
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
