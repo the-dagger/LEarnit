@@ -39,6 +39,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        correctCounter=0;
         ArrayList<SingleChoiceQuestion> singleChoiceQuestionArrayList = getIntent().getParcelableArrayListExtra("singleChoiceQuestion");
         answer = getIntent().getIntArrayExtra("answer");
         Log.e("Size", String.valueOf(singleChoiceQuestionArrayList.size()));
