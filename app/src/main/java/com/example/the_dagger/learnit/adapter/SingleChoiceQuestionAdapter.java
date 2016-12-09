@@ -46,6 +46,7 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
             holder.rb1.setText(singleChoiceQuestion.getOptions().get(1));
             holder.rb2.setText(singleChoiceQuestion.getOptions().get(2));
             holder.rb3.setText(singleChoiceQuestion.getOptions().get(3));
+            index = -1;
 
         }
     }
