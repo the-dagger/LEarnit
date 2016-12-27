@@ -20,8 +20,9 @@ import java.util.ArrayList;
 
 public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoiceQuestionAdapter.ViewHolder> implements View.OnClickListener {
     private ArrayList<SingleChoiceQuestion> singleChoiceQuestionArrayList;
-
+    ArrayList<Boolean>answered;
     public int index = -1;
+
     @Override
     public SingleChoiceQuestionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.question_single_choice,parent,false);
@@ -30,23 +31,38 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
 
     public SingleChoiceQuestionAdapter(Context context, ArrayList<SingleChoiceQuestion> singleChoiceQuestionList){
         this.singleChoiceQuestionArrayList = singleChoiceQuestionList;
+        this.answered = new ArrayList<>();
+        for(int i=0; i<singleChoiceQuestionArrayList.size(); i++){
+            answered.add(false);
+        }
     }
 
     @Override
-    public void onBindViewHolder(SingleChoiceQuestionAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(SingleChoiceQuestionAdapter.ViewHolder holder, final int position) {
         int position1 = holder.getAdapterPosition();
         SingleChoiceQuestion singleChoiceQuestion = singleChoiceQuestionArrayList.get(holder.getAdapterPosition());
         if(getItemCount() == -1){
             holder.question.setText("No Questions at the moment");
         }
         else{
+            index = -1;
 //            Log.e("Name",singleCategory.getName());
             holder.question.setText(singleChoiceQuestion.getQuestion());
             holder.rb0.setText(singleChoiceQuestion.getOptions().get(0));
             holder.rb1.setText(singleChoiceQuestion.getOptions().get(1));
             holder.rb2.setText(singleChoiceQuestion.getOptions().get(2));
             holder.rb3.setText(singleChoiceQuestion.getOptions().get(3));
-            index = -1;
+            holder.group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                    View radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+                    index = radioGroup.indexOfChild(radioButton);
+                    answered.set(position,true);
+                }
+            });
+            if (!answered.get(position)){
+                holder.group.clearCheck();
+            }
 
         }
     }
@@ -79,14 +95,14 @@ public class SingleChoiceQuestionAdapter extends RecyclerView.Adapter<SingleChoi
             rb3 = (RadioButton) itemView.findViewById(R.id.singleChoice3);
 
             group = (RadioGroup) itemView.findViewById(R.id.radioGroup);
-            group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                    View radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
-                    index = radioGroup.indexOfChild(radioButton);
-//                    Log.e("Index", String.valueOf(index) + " and " + String.valueOf(i));
-                }
-            });
+//            group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//                @Override
+//                public void onCheckedChanged(RadioGroup radioGroup, int i) {
+//                    View radioButton = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
+//                    index = radioGroup.indexOfChild(radioButton);
+////                    Log.e("Index", String.valueOf(index) + " and " + String.valueOf(i));
+//                }
+//            });
         }
     }
 }
